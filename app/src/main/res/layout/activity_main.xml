@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/et_student_name"
+            android:layout_width="267dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="25dp"
+            android:autofillHints=""
+            android:hint="@string/student_name"
+            android:inputType="text" />
+
+        <Button
+            android:id="@+id/btn_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:layout_toEndOf="@id/et_student_name"
+            android:layout_toRightOf="@id/et_student_name"
+            android:onClick="onAdd"
+            android:text="@string/add" />
+
+        <TableLayout
+            android:id="@+id/table_scoreboard"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/et_student_name"
+            android:layout_margin="15dp">
+
+            <TableRow>
+
+                <TextView
+                    android:paddingRight="100dp"
+                    android:text="@string/student_name"
+                    android:textSize="20sp" />
+
+                <TextView
+
+                    android:text="@string/score"
+                    android:textSize="20sp" />
+            </TableRow>
+        </TableLayout>
+    </RelativeLayout>
+</ScrollView>
