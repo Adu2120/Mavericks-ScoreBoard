@@ -5,4 +5,5 @@
     <string name="todo">TODO</string>
     <string name="student1">Student1</string>
     <string name="add">Add</string>
+    <string name="sort">Sort</string>
 </resources>
