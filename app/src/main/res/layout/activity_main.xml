@@ -41,11 +41,13 @@
 
                 <TextView
                     android:paddingRight="100dp"
+                    style="@style/TextAppearance.AppCompat.Title"
+                    android:layout_gravity="center"
                     android:text="@string/student_name"
                     android:textSize="20sp" />
 
                 <TextView
-
+                    style="@style/TextAppearance.AppCompat.Title"
                     android:text="@string/score"
                     android:textSize="20sp" />
             </TableRow>

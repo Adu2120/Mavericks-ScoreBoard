@@ -32,39 +32,40 @@ public class MainActivity extends AppCompatActivity {
         TableRow.LayoutParams params = new TableRow.LayoutParams(TableLayout.LayoutParams.WRAP_CONTENT, TableLayout.LayoutParams.MATCH_PARENT);
 
         TableRow tableRow = new TableRow(this);
+        if (!et_student.getText().toString().equals("")) {
+            TextView txt = new TextView(this);
+            txt.setText(et_student.getText().toString());
+            txt.setTextSize(18);
+            txt.setLayoutParams(params);
+            txt.setPadding(0, 0, 150, 0);
+            txt.setGravity(Gravity.CENTER);
 
-        TextView txt = new TextView(this);
-        txt.setText(et_student.getText().toString());
-        txt.setTextSize(18);
-        txt.setLayoutParams(params);
-        txt.setPadding(0,0,150,0);
-        txt.setGravity(Gravity.CENTER);
+            TextView cnt = new TextView(this);
+            cnt.setText("1");
+            cnt.setTextSize(18);
+            cnt.setLayoutParams(params);
+            cnt.setPadding(0, 0, 30, 0);
+            cnt.setId(i);
+            cnt.setGravity(Gravity.CENTER);
 
-        TextView cnt = new TextView(this);
-        cnt.setText("1");
-        cnt.setTextSize(18);
-        cnt.setLayoutParams(params);
-        cnt.setPadding(0,0,30,0);
-        cnt.setId(i);
-        cnt.setGravity(Gravity.CENTER);
+            ImageButton add = new ImageButton(this);
+            add.setImageResource(R.drawable.ic_counter);
+            add.setLayoutParams(params);
+            add.setId(i);
+            add.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int count = Integer.parseInt(cnt.getText().toString());
+                    count++;
+                    cnt.setText(Integer.toString(count));
+                }
+            });
 
-        ImageButton add = new ImageButton(this);
-        add.setImageResource(R.drawable.ic_counter);
-        add.setLayoutParams(params);
-        add.setId(i);
-        add.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int count = Integer.parseInt(cnt.getText().toString());
-                count++;
-                cnt.setText(Integer.toString(count));
-            }
-        });
-
-        tableRow.addView(txt);
-        tableRow.addView(cnt);
-        tableRow.addView(add);
-        student_table.addView(tableRow);
-        et_student.setText("");
+            tableRow.addView(txt);
+            tableRow.addView(cnt);
+            tableRow.addView(add);
+            student_table.addView(tableRow);
+            et_student.setText("");
+        }
     }
 }
