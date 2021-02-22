@@ -40,7 +40,7 @@
             <TableRow>
 
                 <TextView
-                    android:paddingRight="100dp"
+                    android:paddingRight="80dp"
                     style="@style/TextAppearance.AppCompat.Title"
                     android:layout_gravity="center"
                     android:text="@string/student_name"
