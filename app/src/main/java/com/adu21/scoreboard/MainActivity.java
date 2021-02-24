@@ -9,15 +9,19 @@ import android.widget.ImageButton;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-    int i = 50;
-    int j = 100;
-    int m = 150;
+    int i = 50;// id of textfield of name;
+    int j = 100;//id of textfield of score;
+    int m = 150;//id of tablerow;
+    int count2 = 0;
+    boolean flag = false;
+    boolean flag1 = false;
     private EditText et_student;
     private TableLayout student_table;
 
@@ -91,6 +95,7 @@ public class MainActivity extends AppCompatActivity {
             et_student.setText("");
 
             Log.d("Name", "" + txt.getId());
+            //flag = false;
         }
     }
 
@@ -98,24 +103,40 @@ public class MainActivity extends AppCompatActivity {
 
         ArrayList<String> name = new ArrayList<String>();
         ArrayList<Integer> scores = new ArrayList<Integer>();
-        ArrayList<Integer> score5 = new ArrayList<Integer>();
-        ArrayList<String> name5 = new ArrayList<String>();
 
         Log.d("Name", "" + name + " " + scores);
         //Here We have to adjust the value of i such that the null value exception will gone.
+        if (!flag) {
+            for (int a = 51; a <= i; a++) {
+                TextView textView = findViewById(a);
+                TextView score = findViewById(a + 50);
+                TableRow row = findViewById(a + 100);
+                scores.add(Integer.parseInt(score.getText().toString()));
+                name.add(textView.getText().toString());
+                student_table.removeView(row);
+                Log.d("Name", "" + name + " " + scores);
+            }
+            if(!flag1){
+                count2 = name.size();
+                flag1 = true;
+            }
+            Log.d("Name", "" + name + " " + scores + count2);
 
-        for (int a = 51; a <= i; a++) {
-            TextView textView = findViewById(a);
-            TextView score = findViewById(a + 50);
-            TableRow row = findViewById(a + 100);
-            //name.put(textView.getText().toString(),Integer.parseInt(score.getText().toString()));
-            //Log.d("Name", ""+name.keySet()+" "+name.values());
-            scores.add(Integer.parseInt(score.getText().toString()));
-            name.add(textView.getText().toString());
-            student_table.removeView(row);
+            for (int k = 0; k < count2; k++) {
+                String topper = name.get(max(scores));
+                int high = scores.get(max(scores));
+                Log.d("Name", "" + topper + " " + high);
+                name.remove(topper);
+                scores.remove(max(scores));
+                addView(topper, Integer.toString(high));
+                flag = true;
+            }
+        } else {
+            Toast.makeText(getApplicationContext(), "Already sorted", Toast.LENGTH_LONG).show();
         }
-        Log.d("Name", "" + name + " " + scores);
-
+/*        m = 150;
+        i = 50;
+        j = 100;
         for (int k = 0; k < 5; k++) {
             String topper = name.get(max(scores));
             int high = scores.get(max(scores));
@@ -126,7 +147,7 @@ public class MainActivity extends AppCompatActivity {
             scores.remove(max(scores));
             addView(topper, Integer.toString(high));
         }
-/*
+
         m = 150;
         i = 50;
         j = 100;
